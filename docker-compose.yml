@@ -1,0 +1,58 @@
+services:
+    app:
+        build:
+            args:
+                # Não altere o nome de usuário abaixo
+                user: yasmim-moraes
+                uid: 1000
+            context: ./
+            dockerfile: docker/php/php.dockerfile
+        image: php84
+        extra_hosts:
+            - host.docker.internal:host-gateway
+        container_name: lorena-app
+        restart: unless-stopped
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+            - ./docker/php/.bashrc:/home/dime/.bashrc
+        networks:
+            - dev
+
+    nginx:
+        image: nginx:alpine
+        container_name: lorena-nginx
+        restart: unless-stopped
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx:/etc/nginx/conf.d
+        networks:
+            - dev
+        links:
+            - app
+
+    ############################
+    # Postgres
+    ############################
+    db:
+        image: postgres:16-alpine
+        restart: unless-stopped
+        container_name: ${APP_NAME:-postgres}-db
+        environment:
+            POSTGRES_PASSWORD: ${DB_PASSWORD:-123456789}
+        ports:
+            - "${DB_PORT:-5432}:${DB_PORT:-5432}"
+        volumes:
+            - arquivos_postgres:/var/lib/postgresql/data
+        networks:
+            - dev
+
+volumes:
+    arquivos_postgres:
+
+networks:
+    dev:
+        driver: bridge

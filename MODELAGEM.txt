@@ -1,0 +1,36 @@
+MODELAGEM
+
+MESAS
+id
+Numero
+Status (aberta, fechada)
+
+PEDIDOS
+id
+IdMesa (FK)
+nome do cliente
+Valor
+Data_Hora_Pedido_Aberto
+Data_Hora_Pedido_Fechado
+
+PEDIDOS_PRODUTOS
+id_produto_pedido
+idPedido
+idProduto
+quantidade INT (do produto comprado)
+preco_unitario (daquele dia)
+
+PRODUTOS
+id
+Nome
+Preco
+Quantidade
+Descrição
+tipo (bebida, comida, sobremesa, entrada)
+
+Para cada pedido criado, é necessário que tenha no minimo um produto e uma mesa relacionada. 
+Varios produtos podem estar em VARIOS pedidos. 
+Uma mesa pode estar em varios pedidos.
+Um pedido só pode ter uma mesa.
+
+
