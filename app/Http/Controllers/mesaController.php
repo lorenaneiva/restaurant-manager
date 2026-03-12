@@ -13,21 +13,12 @@ class mesaController extends Controller
     }
     
     public function store(Request $request){
-        /*$request->validate([
-            'numero' => 'required',
-        ]);
-
-        Mesa::create([
-            'numero' => $request->numero
-        ]);*/
         $quantidade = $request->quantidade;
 
         Mesa::truncate();
 
         for($i = 1; $i <= $quantidade; $i++){
-            Mesa::create([
-                'numero'=>$i
-            ]);
+            Mesa::create();
         }
 
         return redirect('/mesas');

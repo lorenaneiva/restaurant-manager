@@ -24,8 +24,15 @@
 }
 
 .exhibition-table td, th{
+    width: clamp(30px, 5vw, 10vw);
     text-align:center;
     word-break: break-word;
     padding: 20px;
     overflow-wrap: break-word;
+}
+.container-buttons-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
 }

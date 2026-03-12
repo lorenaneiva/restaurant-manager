@@ -7,7 +7,7 @@
         <label for="quantidade">Quantidade de mesas:</label>
         <input type="number" name="quantidade" class="input-tn" min="1" required>
     </div>
-    <input type="submit" value="cadastrar" class="submit">
+    <input type="submit" value="cadastrar" class="submit" id="enterPress">
 </form>
 
 
@@ -20,7 +20,7 @@
         <tbody>
             @foreach ($mesas as $mesa)
                 <tr>
-                    <td>{{$mesa->numero}}</td>
+                    <td>{{$mesa->id}}</td>
                     <td>{{$mesa->status}}</td>
                 </tr>
             @endforeach

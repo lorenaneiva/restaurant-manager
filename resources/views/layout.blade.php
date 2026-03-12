@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ asset('css/layoutBase.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formElements.css') }}">
     <link rel="stylesheet" href="{{ asset('css/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pedidoDet.css') }}">
     <title>Restaurante</title>
-
 </head>
 <body>
     <header>
@@ -29,13 +29,29 @@
     </header>
     <main>
         @if($errors->any())
-            <ul>
+            <ul class="error-messages">
                 @foreach($errors->all() as $error)
-                    <li style="color:red">{{ $error }}</li>
+                    <li>{{ $error }}</li>
                 @endforeach
             </ul>
         @endif
         @yield('content')
     </main>
+
+    <script>
+        document.addEventListener('keypress', function(e){
+            if(e.key === 'Enter'){
+                var btn = document.querySelector("#enterPress")
+                btn.click()
+            }
+        })
+        // reconhece qualquer tipo de recarregamento da pagina e atualiza automaticamente os dados.
+        window.addEventListener( "pageshow", function ( event ) {
+            var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+            if ( historyTraversal ) {
+                window.location.reload();
+            }
+        });
+    </script>
 </body>
 </html>

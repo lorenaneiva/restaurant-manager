@@ -3,9 +3,12 @@
     border-radius: 10px;
     border: none;
     background-color: #164DF2;
-    color: #e5e5e5
+    color: #e5e5e5;
+    font-size: 1.2rem;
 }
-
+.delete{
+    background-color: #E74C3C;
+}
 .input-tn, .text-area {
     padding: 10px;
     border: 1px solid #e5e5e5;
@@ -17,6 +20,7 @@ form{
     gap: 10px;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .form-group{

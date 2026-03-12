@@ -1,0 +1,32 @@
+.pedido-container{
+    width: 100%;
+    background-color: #FFF;
+    margin: 40px auto;
+    border-radius: 20px;
+    width: 80vw;
+}
+
+.container-main-details{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    text-align: left;
+    font-size: 0.8rem;
+    padding: 10px;
+    background-color: #3061F2;
+    color: #FFF;
+    border-radius: 20px 20px 0 0;
+}
+
+.produtos-table{
+    width: 50%;
+    text-align: left;
+    margin: 20px;
+}
+
+.expPreco{
+    background-color: #FFF;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 10px;
+}

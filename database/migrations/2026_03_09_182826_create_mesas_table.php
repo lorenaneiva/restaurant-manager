@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('numero');
             $table->enum('status', ['aberta', 'fechada'])->default('fechada');
             $table->timestamps();
         });

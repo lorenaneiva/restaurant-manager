@@ -19,13 +19,12 @@ return new class extends Migration
             $table->decimal('valor', 8, 2);
             $table->dateTime('pedido_aberto');
             $table->dateTime('pedido_fechado')->nullable();
+            $table->boolean('aberto')->default(true);
+            $table->unique(['nome_cliente','idMesa', 'aberto']);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('pedidos');

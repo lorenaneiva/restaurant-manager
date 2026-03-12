@@ -30,4 +30,10 @@ class produtoController extends Controller
 
         return redirect('/produtos');
     }
+
+    public function destroy($id){
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+        return redirect('/produtos');
+    }
 }
