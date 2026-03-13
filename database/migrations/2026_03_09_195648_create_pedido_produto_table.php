@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pivote_produto_pedidos', function (Blueprint $table) {
+        Schema::create('pedido_produto', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('idProduto');
-            $table->unsignedBigInteger('idPedido');
-            $table->foreign('idProduto')->references('id')->on('produtos');
-            $table->foreign('idPedido')->references('id')->on('pedidos');
+            $table->foreignId('produto_id')->constrained();
+            $table->foreignId('pedido_id')->constrained();
             $table->integer('quantidade');
             $table->decimal('preco', 8, 2);
             $table->timestamps();

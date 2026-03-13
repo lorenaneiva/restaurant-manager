@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id('id');
-            $table->enum('status', ['aberta', 'fechada'])->default('fechada');
+            $table->enum('status', ['desocupada', 'ocupada'])->default('desocupada');
             $table->timestamps();
         });
     }

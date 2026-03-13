@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Produto;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Pedido extends Model
 {
@@ -12,7 +13,7 @@ class Pedido extends Model
         'pedido_aberto' =>'datetime',
         'pedido_fechado' => 'datetime'
     ];
-    public function produtos() {
-    return $this->belongsToMany(Produto::class)->withPivot('quantidade','preco')->withTimestamps();
+    public function produtos() : BelongsToMany {
+        return $this->belongsToMany(Produto::class);
     }
 }

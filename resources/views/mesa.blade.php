@@ -21,7 +21,7 @@
             @foreach ($mesas as $mesa)
                 <tr>
                     <td>{{$mesa->id}}</td>
-                    <td>{{$mesa->status}}</td>
+                    <td>{{ucfirst($mesa->status)}}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -1,14 +1,15 @@
 @extends('layout')
 
 @section('content')
-<form action="{{route('detalhes-pedido.attachProduto', $pedido->id)}}" class="detalhes-form">
+<form action="{{route('detalhes-pedido.attachProduto', $pedido->id)}}" method="POST" class="detalhes-form">
+    @csrf
     <div class="form-group">
         <label for="produto">Produto:</label>
         <input list="produtos" name="produto" placeholder="Digite o nome do produto..." id='produtoesc' class="input-tn">
         <datalist name="produtos"  id='produtos' >
             @foreach($produtos as $produto)
-            <option value="{{$produto->nome}}">
-                {{ucfirst($produto->nome)}}
+            <option value="{{$produto->id}}">
+                {{ucfirst($produto->id)}}
             </option>
             @endforeach
         </datalist>
@@ -32,11 +33,7 @@
         <h1>Aberto: {{$pedido->pedido_aberto->format('d/m/Y H:i')}}</h1>
     </div>
     <ul>
-        @foreach($pedido->produtos as $produto)
-                <li>{{$produto->nome}}</li>
-                <li>{{$produto->preco}}</li>
-                <li>{{$produto->pivot->quantidade}}</li>
-        @endforeach
+        
     </ul>
 </div>
 
