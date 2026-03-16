@@ -16,7 +16,6 @@ class pivotProdutoPedidoController extends Controller
     }
 
     public function attachProduto(Request $request, $id){
-        dd($request);
         $pedido = Pedido::findOrFail($id);
         $request->validate([
             'id' => 'required|exists:produtos,id',
