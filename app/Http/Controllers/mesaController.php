@@ -8,7 +8,7 @@ use App\Models\Mesa;
 class mesaController extends Controller
 {
     public function index(){
-        $mesas = Mesa::all();
+        $mesas = Mesa::orderBy('id', 'asc')->get();
         return view('mesa', ['mesas' => $mesas]);
     }
     

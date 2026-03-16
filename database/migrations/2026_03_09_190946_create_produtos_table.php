@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id('id');
-            $table->string('nome');
+            $table->string('nome')->unique();
             $table->decimal('preco', 8, 2);
             $table->text('descricao')->nullable();
             $table->enum('categoria', ['comida', 'entrada', 'bebida', 'sobremesa']);

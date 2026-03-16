@@ -26,6 +26,8 @@ class produtoRequest extends FormRequest
         return [
             'nome.required' => 'Por favor, preencha o campo nome do produto.',
             'nome.min' => 'O campo nome tem que ter no min 3 caracteres.',
+            'preco.required' => 'Por favor, preencha o campo preço.',
+            'preco.min' => 'Por favor, atribua o valor de no minímo R$ 0.01',
             'descricao.max' => 'O campo descricao, só pode ter no máximo 500 caracteres.',
             'categoria.exists' => 'Por favor, preencha o campo categoria.'
         ];

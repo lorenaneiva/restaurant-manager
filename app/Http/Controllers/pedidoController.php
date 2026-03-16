@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\pedidoRequest;
 use App\Models\Pedido;
+use App\Models\Mesa;
 use Illuminate\Http\Request;
 
 class pedidoController extends Controller
@@ -23,15 +24,24 @@ class pedidoController extends Controller
             $pedido->valor = 0;
             $pedido->pedido_aberto = now();
             $pedido->save();
+
+            $mesa = Mesa::findOrFail($pedido->idMesa);
+            $mesa->status = 'ocupada';
+            $mesa->save();
+
             $id = $pedido->id;
         } catch (\Illuminate\Database\QueryException $e) {
             return back()->withErrors(['msg' => 'Já existe um pedido aberto para este cliente e mesa.']);
         }
-
+        
         return redirect()->route('detalhes-pedido.index', ['id' => $id]);
     }
     public function destroy($id){
         $pedido = Pedido::findOrFail($id);
+        $mesa = Mesa::findOrFail($pedido->idMesa);
+        $mesa->status = 'desocupada';
+        $mesa->save();
+
         $pedido->delete();
         return redirect()->back();
     }

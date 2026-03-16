@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Https\Requests\produtoRequest;
+use App\Http\Requests\produtoRequest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -14,14 +14,19 @@ class produtoController extends Controller
         return view('produto', compact('categorias', 'produtos'));
     }
 
-    public function store(Request $request){
+    public function store(produtoRequest $request){
         $validated = $request->validated();
-        $produto = new Produto();
-        $produto->nome = $validated.trim(mb_strtolower('[nome]'));
-        $produto->preco = $validated['preco'];
-        $produto->descricao = $validated.trim(['descricao']);
-        $produto->categoria = $validated['categoria'];
-        $produto->save;
+
+        try {
+            $produto = new Produto();
+            $produto->nome = $validated['nome'];
+            $produto->preco = $validated['preco'];
+            $produto->descricao = $validated['descricao'];
+            $produto->categoria = $validated['categoria'];
+            $produto->save();
+        } catch (\Illuminate\Database\QueryException $e){
+            return back()->withErrors(['msg' => 'Já existe um produto com esse nome.']);
+        }
 
         return redirect('/produtos');
     }

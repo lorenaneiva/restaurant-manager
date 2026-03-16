@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<form action="{{route('detalhes-pedido.attachProduto', $pedido->id)}}" method="POST" class="detalhes-form">
+<form action="{{route('detalhes-pedido.attachProduto', $pedido->id)}}" method="POST" class="detalhes-form" autocomplete="off">
     @csrf
     <div class="form-group">
         <label for="produto">Produto:</label>
