@@ -2,32 +2,33 @@
 .container-table{
     background-color: #FFF;
     width: 80vw;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     margin: 40px auto;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 .exhibition-table{
     width: 100%;
     border-collapse: collapse;
 }
 .exhibition-table thead{
-    background-color: #3061F2;
+    background-color: var(--color-primary);
 }
 
 .exhibition-table th{
     font-weight:600;
-    color:#e5e5e5;
+    color: var(--color-surface);
 }
 
 .exhibition-table td{
-    border-top:1px solid #e5e5e5;
+    border-top:1px solid var(--color-surface);
 }
 
 .exhibition-table td, th{
     width: clamp(30px, 5vw, 10vw);
     text-align:center;
     word-break: break-word;
-    padding: 20px;
+    padding: var(--space-md);
     overflow-wrap: break-word;
 }
 .container-buttons-table{

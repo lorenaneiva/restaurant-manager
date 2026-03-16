@@ -16,7 +16,6 @@ class pivotProdutoPedidoController extends Controller
     }
 
     public function attachProduto(Request $request, $id){
-        dd($request);
         $pedido = Pedido::findOrFail($id);
         $request->validate([
             'id' => 'required|exists:produtos,id',
@@ -24,7 +23,7 @@ class pivotProdutoPedidoController extends Controller
             ]);
         $produto = Produto::findOrFail($request->id);
         $quantidade = $request->quantidade;
-        $subtotal = $quantidade * $produto->valor;
+        $subtotal = $quantidade * $produto->preco;
 
         $pedido->produtos()->attach($produto->id, [
             'quantidade' => $quantidade,

@@ -14,6 +14,6 @@ class Pedido extends Model
         'pedido_fechado' => 'datetime'
     ];
     public function produtos() : BelongsToMany {
-        return $this->belongsToMany(Produto::class);
+        return $this->belongsToMany(Produto::class)->withPivot('quantidade','preco');
     }
 }
