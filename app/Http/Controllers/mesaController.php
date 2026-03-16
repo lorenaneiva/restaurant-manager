@@ -15,8 +15,6 @@ class mesaController extends Controller
     public function store(Request $request){
         $quantidade = $request->quantidade;
 
-        Mesa::truncate();
-
         for($i = 1; $i <= $quantidade; $i++){
             Mesa::create();
         }

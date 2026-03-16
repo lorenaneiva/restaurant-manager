@@ -1,23 +1,29 @@
 .submit{
-    padding: 10px;
-    border-radius: 10px;
+    padding: var(--space-md);
+    border-radius: var(--space-md);
     border: none;
-    background-color: #164DF2;
-    color: #e5e5e5;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
     font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-a);
+}
+
+.submit:hover{
+    transform: translateY(5px);
 }
 .delete{
-    background-color: #E74C3C;
+    background-color: var(--color-danger);
 }
 .input-tn, .text-area {
-    padding: 10px;
-    border: 1px solid #e5e5e5;
-    border-radius: 20px;
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
 }
 
 form{
     display: flex;
-    gap: 10px;
+    gap: var(--space-md);
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
@@ -26,7 +32,7 @@ form{
 .form-group{
     display: flex;       
     align-items: center;
-    gap: 10px;
+    gap: var(--space-md);
 }
 .select-container{
     position: relative;
@@ -35,10 +41,10 @@ form{
 select {
     appearance: none;
     width: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background-color: white;
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
     cursor: pointer;
 }
 
@@ -55,6 +61,6 @@ select {
 
 select:focus, .input-tn:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
 }

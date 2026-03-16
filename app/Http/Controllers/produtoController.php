@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Https\Requests\produtoRequest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -14,19 +15,13 @@ class produtoController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
-            'nome' => 'required|min:3',
-            'preco' => 'required|decimal:0|min:0.01' ,
-            'descricao' => 'nullable|max:500',
-            'categoria' => 'required'
-        ]);
-
-        Produto::create([
-            'nome' => $request->nome,
-            'preco' => $request->preco,
-            'descricao' => $request->descricao,
-            'categoria' => $request->categoria,
-        ]);
+        $validated = $request->validated();
+        $produto = new Produto();
+        $produto->nome = $validated.trim(mb_strtolower('[nome]'));
+        $produto->preco = $validated['preco'];
+        $produto->descricao = $validated.trim(['descricao']);
+        $produto->categoria = $validated['categoria'];
+        $produto->save;
 
         return redirect('/produtos');
     }

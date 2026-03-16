@@ -44,12 +44,12 @@
         <tbody>
                 @foreach ($produtos as $produto)
                     <tr>
-                        <td>{{$produto->nome}}</td>
+                        <td>{{ucfirst($produto->nome)}}</td>
                         <td>{{$produto->preco}}</td>
-                        <td>{{$produto->categoria}}</td>
+                        <td>{{ucfirst($produto->categoria)}}</td>
     
                         @if($produto->descricao != null)
-                        <td>{{$produto->descricao}}</td>
+                        <td>{{$ucfirst(produto->descricao)}}</td>
                         @else
                         <td>...</td>
                         @endif

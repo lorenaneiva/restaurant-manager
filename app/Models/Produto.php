@@ -10,6 +10,6 @@ class Produto extends Model
 {
     protected $fillable = ['nome','preco', 'descricao', 'quantidade', 'categoria'];
     public function pedidos() : BelongsToMany {
-        return $this->belongsToMany(Pedido::class);
+        return $this->belongsToMany(Pedido::class)->withPivot('quantidade','preco');
     }
 }
